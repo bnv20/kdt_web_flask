@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <title>Detection Results</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">KITA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://127.0.0.1:5000/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:5000/detect">Detect</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="starter-template">
+      <h2 class="mt-5">Detection Results</h2> {% for i in range(len(files)) %} <div class="card mt-3"
+        style="width: 18rem;">
+        <img src="{{ url_for('static', filename='aft/' + files[i]) }}" class="card-img-top" alt="Processed Image">
+        <div class="card-body">
+          <h5 class="card-title">Result #{{ i+1 }}</h5>
+          <p class="card-text">Detection: {{ resultlist[i] }}</p>
+          <p class="card-text">Status: {{ pf[i] }}</p>
+        </div>
+      </div> {% endfor %} <a href="/" class="btn btn-primary mt-3">Go Back</a>
+    </div>
+  </body>
+
+</html>
