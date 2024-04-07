@@ -28,18 +28,44 @@
           </ul>
         </div>
       </nav>
-    </div>
-    <div class="starter-template">
-      <h2 class="mt-5">Detection Results</h2> {% for i in range(len(files)) %} <div class="card mt-3"
-        style="width: 18rem;">
-        <img src="{{ url_for('static', filename='aft/' + files[i]) }}" class="card-img-top" alt="Processed Image">
-        <div class="card-body">
-          <h5 class="card-title">Result #{{ i+1 }}</h5>
-          <p class="card-text">Detection: {{ resultlist[i] }}</p>
-          <p class="card-text">Status: {{ pf[i] }}</p>
+      <div class="text-center">
+        <h2 class="m-3">Detection Results</h2> {% for i in range(len(files)) %} <div
+          class="d-flex justify-content-center align-items-center">
+          <div class="card m-5" style="max-width: 800px;">
+            <div class="row no-gutters">
+              <div class="col-md-6">
+                <img src="{{ url_for('static', filename='aft/' + files[i]) }}" class="card-img" alt="Processed Image">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h5 class="card-title">Result #{{ i+1 }}</h5>
+                  <p class="card-text">File: {{ files[i] }}</p>
+                  <p class="card-text">Detection: {{ resultlist[i] }}</p>
+                  <p class="card-text">Status: {{ pf[i] }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div> {% endfor %} <a href="/" class="btn btn-primary mt-3">Go Back</a>
+      </div> {% endfor %} <nav aria-label="Page navigation" class="mb-5">
+        <ul class="pagination justify-content-center"> {% for i in range(len(files)) %} <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" onclick="showResult({{ i }});">{{ i+1 }}</a>
+          </li> {% endfor %} </ul>
+      </nav>
     </div>
+    </div>
+    <footer class="footer" style="text-align: center; bottom: 0; position:fixed; width:100%;"> © 2024 KITA. All rights
+      reserved. </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function showResult(index) {
+        $('.card').hide().eq(index).show();
+      }
+      $(document).ready(function () {
+        $('.card').hide().first().show();
+      });
+    </script>
   </body>
 
 </html>
