@@ -1,0 +1,17 @@
+.starter-template {
+  text-align: center;
+  margin-top: 50px;
+
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+img {
+  margin: auto;
+  padding: 20px 15px;
+}
